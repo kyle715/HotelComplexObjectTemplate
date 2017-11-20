@@ -1,3 +1,5 @@
+/*global $*/
+
 var hotel = {
     rooms: [
         {
@@ -20,6 +22,10 @@ var hotel = {
 }
 
 // display rooms as radio options
+function displayInfo(room) {
+    document.getElementById("available").innerHTML = hotel.rooms[room].available;
+    document.getElementById('price').innerHTML = hotel.rooms[room].price;
+}
 
 for (var i=0; i < hotel.rooms.length; i ++) {
     var radioBtn =document.createElement("INPUT");
@@ -28,13 +34,12 @@ for (var i=0; i < hotel.rooms.length; i ++) {
     radioBtn.setAttribute('name', 'rooms');
     radioBtn.setAttribute('value', i);
     radioBtn.setAttribute('id', "room" + i );
+    radioBtn.setAttribute('onclick', `displayInfo(${i})`);
     radioLbl.innerHTML = hotel.rooms[i].name;
     document.getElementById('radialSection').appendChild(radioBtn);
     document.getElementById('radialSection').appendChild(radioLbl);
 }
 
-
 // on form submission confirm radio was selected
-
 
 // and checkbox is checked
